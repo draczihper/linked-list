@@ -39,6 +39,47 @@ function linkedList() {
         tail(){
             return this.tail;
         },
+
+        at(index) {
+            if (index < 0 || index >= this.size) return null;
+            let current = this.head;
+            for (let i = 0; i < index; i++) {
+                current = current.next;
+            }
+            return current;
+        },
+
+        pop() {
+            if (!this.head) return null;
+            if (this.head === this.tail){
+                const poppedValue = this.head.value;
+                this.head = null;
+                this.tail = null;
+                this.size--;
+                return poppedValue;
+            }
+            let current = this.head;
+            while(current.next.next !== null) {
+                current = current.next;
+            }
+            const poppedValue = current.next.value;
+            current.next = null;
+            this.tail = current;
+            this.size--;
+            return poppedValue;
+        },
+
+        contains(value) {
+            let current = this.head;
+            while(current !== null) {
+                if (current.value == value) {
+                    return true;
+                }
+                current = current.next;
+            }
+            return false;
+        }
+
     };
 }
 
