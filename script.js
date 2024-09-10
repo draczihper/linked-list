@@ -5,9 +5,8 @@ function linkedList() {
         tail: null,
         size: 0,
 
-
-        append(val) {
-            const newNode = node(val);
+        append(value) {
+            const newNode = node(value);
             if (!this.head) {
                 this.head = newNode;
                 this.tail = newNode;
@@ -18,8 +17,8 @@ function linkedList() {
             this.size++;
         },
 
-        prepend(val) {
-            const newNode = node(val);
+        prepend(value) {
+            const newNode = node(value);
             newNode.next = this.head;
             this.head = newNode;
             if (!this.tail) {
@@ -28,15 +27,15 @@ function linkedList() {
             this.size++;
         },
 
-        size() {
+        getSize() {
             return this.size;
         },
 
-        head() {
+        getHead() {
             return this.head;
         },
 
-        tail(){
+        getTail(){
             return this.tail;
         },
 
@@ -104,14 +103,20 @@ function linkedList() {
     };
 }
 
-function node(val) {
+function node(value) {
 
     return {
-        value: val,
-        nextNode: null,
+        value,
+        next: null,
     }
 }
 
+const listOne = linkedList()
+listOne.append("dog");
+listOne.append("cat");
+listOne.append("parrot");
 
-module.exports = linkedList;
+console.log(listOne.toString());
+
+// module.exports = linkedList;
 
