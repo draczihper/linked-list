@@ -78,7 +78,28 @@ function linkedList() {
                 current = current.next;
             }
             return false;
-        }
+        },
+
+        find(value) {
+            let current = this.head;
+            while (current !== null) {
+                if (current.value === value) {
+                    return current;
+                }
+                current = current.next;
+            }
+            return null;
+        },
+        
+        toString() {
+            let str = "";
+            let current = this.head;
+            while(current !== null) {
+                str += `${current.value} ->`;
+                current = current.next;
+            }
+            return str.slice(0, -3);
+        },
 
     };
 }
