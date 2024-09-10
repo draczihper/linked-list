@@ -1,41 +1,55 @@
 function linkedList() {
-    const node = nodeFunc();
 
     return {
-        append: function(val) {
-            if (node.nextNode == null) {
-               return node.value = node(val, next);
+        head: null,
+        tail: null,
+        size: 0,
+
+
+        append(val) {
+            const newNode = node(val);
+            if (!this.head) {
+                this.head = newNode;
+                this.tail = newNode;
+            } else {
+                this.tail.next = newNode;
+                this.tail = newNode;
             }
+            this.size++;
         },
 
-        prepend: function(val) {
-            return node.value = node(val, linkedList)
-        },
-
-        size: function(node) {
-            let countSize = 0
-            while(node.nextNode != null) {
-                countSize++;
+        prepend(val) {
+            const newNode = node(val);
+            newNode.next = this.head;
+            this.head = newNode;
+            if (!this.tail) {
+                this.tail = newNode;
             }
-            return countSize;
+            this.size++;
         },
 
-        head: function(node) {
-            return node.value;
+        size() {
+            return this.size;
         },
 
-        tail: function() {
-            if (node.nextNode == null) {
-                return node.value;
-            }
+        head() {
+            return this.head;
+        },
+
+        tail(){
+            return this.tail;
         },
     };
 }
 
-function nodeFunc(val = null, next = null) {
+function node(val) {
 
     return {
         value: val,
-        nextNode: next,
+        nextNode: null,
     }
 }
+
+
+module.exports = linkedList;
+
