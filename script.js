@@ -100,6 +100,26 @@ function linkedList() {
             return str.slice(0, -3);
         },
 
+        insertAt(value, index) {
+            if (index < 0 || index > this.size) {
+                throw new Error("Invalid index!")
+            }
+
+            if (index === 0) {
+                return this.prepend(value);
+            } else if (index === this.size) {
+                this.append(value);
+            } else {
+                const newNode = node(value);
+                let current = this.head;
+                for(let i = 0; i < index - 1; i++) {
+                    current = current.next;
+                }
+                newNode.next = current.next;
+                current.next = newNode;
+                this.size++;
+            }
+        }
     };
 }
 
