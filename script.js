@@ -122,7 +122,35 @@ function linkedList() {
         },
 
         removeHead() {
+            if (!this.head) return null
 
+            const removedHead = this.head;
+            this.head = this.head.next;
+            if(!this.head) {
+                this.tail = null;
+            }
+            this.size--;
+            return removedHead.value;
+        },
+
+        removeTail() {
+            if (!this.tail) return null;
+
+            const removedTail = this.tail;
+            if (this.head === this.tail) {
+                this.head = null;
+                this.tail = null;
+            } else {
+                let current = this.head 
+                whitle (current.next !== this.tail) {
+                    current = current.next;
+                }
+                current.next = null;
+                this.tail = current;
+            }
+            this.size--;
+
+            return removedTail.value;
         },
          
         removeAt(index) {
