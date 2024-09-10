@@ -94,7 +94,7 @@ function linkedList() {
             let str = "";
             let current = this.head;
             while(current !== null) {
-                str += `${current.value} ->`;
+                str += `${current.value} -> `;
                 current = current.next;
             }
             return str.slice(0, -3);
@@ -111,12 +111,6 @@ function node(value) {
     }
 }
 
-const listOne = linkedList()
-listOne.append("dog");
-listOne.append("cat");
-listOne.append("parrot");
 
-console.log(listOne.toString());
-
-// module.exports = linkedList;
+module.exports = linkedList;
 
