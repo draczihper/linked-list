@@ -101,7 +101,7 @@ function linkedList() {
         },
 
         insertAt(value, index) {
-            if (index < 0 || index > this.size) {
+            if (index < 0 || index >= this.size) {
                 throw new Error("Invalid index!")
             }
 
@@ -119,7 +119,32 @@ function linkedList() {
                 current.next = newNode;
                 this.size++;
             }
-        }
+        },
+
+        removeHead() {
+
+        },
+         
+        removeAt(index) {
+            if (index < 0 || index >= this.size) {
+                throw new Error("Invalid index!")
+            }
+
+            if (index == 0) {
+                return this.removeHead;
+            } else if (index === this.size) {
+                return this.removeTail;
+            } else {
+                let current = this.head;
+                for (let i = 0; i < index - 1; i++) {
+                    current = current.next;
+                }
+                const removedNode = current.next;
+                current.next = removedNode.next;
+                this.size--;
+                return removedNode.value;
+            }
+        },
     };
 }
 
